@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- chart.js cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <title>My Chart.js Chart</title>
+</head>
+
+<body>
+    <div class="container">
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <script>
+        let myChart = document.getElementById('myChart').getContext('2d');
+
+
+        // Global Options:
+        Chart.defaults.global.defaultFontFamily = 'Lato';
+        Chart.defaults.global.defaultFontSize = 18;
+        Chart.defaults.global.defaultFontColor = '#333';
+
+
+
+        // Create new Chart object
+        // @params: html, object
+        let massPopChart = new Chart(myChart, {
+            //all data and props go
+            type: 'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+            data: {
+                labels: ['Boston', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'], //top cities in MA
+
+                //can have multiple datasets
+                datasets: [{
+                    label: 'Population', //label at top of Chart
+                    data: [
+                        617594,
+                        181045,
+                        152060,
+                        106519,
+                        105162,
+                        95072
+                    ],
+                    // backgroundColor:'green'
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)',
+                        'rgba(255, 106, 86, 0.6)',
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(153, 102, 255, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                    ],
+                    borderWidth: 1,
+                    borderColor: '#777',
+                    hoverBorderWidth: 3,
+                    hoverBorderColor: '#000',
+
+                }]
+            },
+            options: {
+                //add title
+                title: {
+                    display: true,
+                    text: 'Largest Cities in MA',
+                    fontSize: 25
+                },
+                //legend options
+                legend: {
+                    position: 'right',
+                    labels: {
+                        fontColor: '#000'
+                    }
+                },
+                //layout
+                layout: {
+                    padding: {
+                        left: 50,
+                        right: 50,
+                        top: 0,
+                        bottom: 3
+                    }
+                },
+                //hide tooltips - false
+                tooltips: {
+                    enabled: true
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
